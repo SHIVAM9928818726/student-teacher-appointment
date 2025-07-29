@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student-Teacher Appointment</title>
+  <style>
+    body {
+       font-family: Arial, sans-serif; 
+      background: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #444;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .confirmation {
+      margin-top: 20px;
+      background-color: #e6ffe6;
+      padding: 10px;
+      border: 1px solid #b2d8b2;
+      color: #333;
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Book Appointment</h2>
+  <form id="appointmentForm">
+    <label for="studentName">Student Name</label>
+    <input type="text" id="studentName" required />
+
+    <label for="teacher">Select Teacher</label>
+    <select id="teacher" required>
+      <option value="">--Choose--</option>
+      <option value="Mr. Sharma">Mr. Sharma</option>
+      <option value="Ms. Verma">Ms. Verma</option>
+      <option value="Dr. Rao">Dr. Rao</option>
+    </select>
+
+    <label for="date">Date</label>
+    <input type="date" id="date" required />
+
+    <label for="time">Time</label>
+    <input type="time" id="time" required />
+
+    <button type="submit">Book Now</button>
+  </form>
+
+  <div class="confirmation" id="confirmationBox">
+    Appointment booked successfully!
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('appointmentForm');
+  // const confirmationBox = document.getElementById('confirmationBox');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('studentName').value;
+    const teacher = document.getElementById('teacher').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+
+    confirmationBox.innerHTML = `
+      ✅ <strong>${name}</strong>, your appointment with <strong>${teacher}</strong> is booked on 
+      <strong>${date}</strong> at <strong>${time}</strong>.
+    `;
+    confirmationBox.style.display = 'block';
+
+    // form.reset();
+  });
+</script>
+
+</body>
+</html>
